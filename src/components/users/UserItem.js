@@ -9,8 +9,9 @@ class UserItem extends Component {
   };
 
   render() {
-    const { id, login, avatar_url, html_url } = this.state;
-
+    // const { id, login, avatar_url, html_url } = this.state;
+    const { login, avatar_url, html_url } = this.props.user;
+    // console.log(this.props.user)
     return (
       <div className="card text-center">
         <img
