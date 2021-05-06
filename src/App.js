@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   async componentDidMount(){
-    // console.log(123)
+    // console.log(process.env.REACT_APP_CLIENT_ID);
     this.setState({loading : true})
     const rest = await axios.get("https://api.github.com/users")
 
