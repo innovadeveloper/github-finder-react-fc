@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Navbar from "./components/layout/Navbar"
-import UserItem from "./components/layout/UserItem"
+import UserItem from "./components/users/UserItem"
 import "./App.css";
+import Users from "./components/users/Users";
 
 // rce -> class component
 class App extends Component {
@@ -12,8 +13,9 @@ class App extends Component {
           <Navbar title="Github Finder" icon="fab fa-github"/>
           {/* <h1>Hello from React</h1> */}
           <UserItem />
+          <Users />
         </div>
-        <h4>xddd</h4>
+        {/* <h4>xddd</h4> */}
       </React.Fragment>
     );
   }
