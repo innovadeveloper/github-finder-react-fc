@@ -8,12 +8,14 @@ import Alert from "./components/layout/Alert";
 import About from "./components/pages/About";
 
 import axios from "axios";
+import User from "./components/users/User";
 
 // rce -> class component
 class App extends Component {
   state = {
     loading: false,
     users: [],
+    user: {},
     alert: null,
   };
 
@@ -34,6 +36,13 @@ class App extends Component {
     this.setState({ loading: false, users: rest.data.items });
   };
 
+  // get single Github user
+  getUser = async (username) => {
+    this.setState({ loading: true });
+    const rest = await axios.get(`https://api.github.com/users/${username}`);
+    this.setState({ loading: false, user: rest.data });
+  };
+
   // clear Github users
   clearUsers = () => {
     this.setState({ users: [], loading: false });
@@ -47,7 +56,7 @@ class App extends Component {
   };
 
   render() {
-    const { users, loading } = this.state;
+    const { users, user, loading } = this.state;
     return (
       <Router>
         <div className="App">
@@ -57,7 +66,7 @@ class App extends Component {
             <Switch>
               <Route
                 exact
-                path='/'
+                path="/"
                 render={(props) => (
                   <Fragment>
                     <Search
@@ -70,7 +79,15 @@ class App extends Component {
                   </Fragment>
                 )}
               />
-              <Route exact path='/about' component={About}></Route>
+              <Route exact path="/about" component={About}></Route>
+
+              <Route
+                exact
+                path="/user/:login"
+                render={(props) => (
+                  <User {...props} getUser={this.getUser} user={user} />
+                )}
+              />
             </Switch>
           </div>
         </div>
