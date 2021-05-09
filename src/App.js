@@ -13,7 +13,7 @@ import User from "./components/users/User";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
   const [alert, setAlert] = useState(null);
@@ -25,14 +25,6 @@ const App = () => {
   //   setLoading(false);
   // }, []);
 
-  // get single Github user
-  const getUser = async (username) => {
-    setLoading(true);
-    const rest = await axios.get(`https://api.github.com/users/${username}`);
-    setUser(rest.data);
-    setLoading(false);
-  };
-
   // get user repos
   const getUserRepos = async (username) => {
     setLoading(true);
@@ -40,12 +32,6 @@ const App = () => {
       `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc`
     );
     setRepos(rest.data);
-    setLoading(false);
-  };
-
-  // clear Github users
-  const clearUsers = () => {
-    setUsers([]);
     setLoading(false);
   };
 
@@ -71,8 +57,6 @@ const App = () => {
                   <Fragment>
                     <Search
                       // searchUsers={searchUsers}
-                      clearUsers={clearUsers}
-                      showClear={users.length > 0}
                       setAlert={showAlert}
                     />
                     <Users/>
@@ -88,10 +72,10 @@ const App = () => {
                   <User
                     {...props}
                     loading={loading}
-                    getUser={getUser}
+                    // getUser={getUser}
                     getRepos={getUserRepos}
                     repos={repos}
-                    user={user}
+                    // user={user}
                   />
                 )}
               />
