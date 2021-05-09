@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class UserItem extends Component {
-  state = {
-    id: "id",
-    login: "innovadeveloper",
-    avatar_url: "https://avatars.githubusercontent.com/u/60544934?v=4",
-    html_url: "https://github.com/innovadeveloper",
-  };
+  // state = {
+  //   id: "id",
+  //   login: "innovadeveloper",
+  //   avatar_url: "https://avatars.githubusercontent.com/u/60544934?v=4",
+  //   html_url: "https://github.com/innovadeveloper",
+  // };
 
   render() {
     // const { id, login, avatar_url, html_url } = this.state;
