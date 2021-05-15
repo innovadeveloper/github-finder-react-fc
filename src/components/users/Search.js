@@ -1,13 +1,26 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import GithubContext from "../../context/github/githubContext";
 import AlertContext from "../../context/alert/alertContext";
+import $ from "jquery";
 
 const Search = () => {
   const githubContext = useContext(GithubContext); // import the context about github state
-  const alertContext = useContext(AlertContext)
+  const alertContext = useContext(AlertContext);
   const [text, setText] = useState("");
 
   const onChangeText = (e) => setText(e.target.value);
+
+  useEffect(() => {
+    // $(document).ready(function () {
+    //   console.log("ready document..")
+    //   $("#mybuttontest").click(function () {
+    //     console.log("xdddd");
+    //     // alert("Handler for .click() called.");
+    //     $("#mybuttontest").addClass("btn-success");
+    //   });
+    //   // $("#mybuttontest").addClass("btn-danger");
+    // });
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -30,6 +43,7 @@ const Search = () => {
           onChange={onChangeText}
         />
         <input
+          id="mybuttontest"
           type="submit"
           value="Search"
           className="btn btn-dark btn-block"
